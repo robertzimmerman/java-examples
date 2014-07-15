@@ -38,6 +38,17 @@ public class Link {
     // main method
     public static void main(String[] args) {
         
+        // execution
+        LinkList theLinkedList = new LinkList();
+        
+        theLinkedList.insertFirstLink("Don Quixote", 20);
+        theLinkedList.insertFirstLink("Harry Potter", 440);
+        theLinkedList.insertFirstLink("Bugs Bunny", 100);
+        theLinkedList.insertFirstLink("Lord Of the Rings", 200);
+        theLinkedList.insertFirstLink("Hot Man", 540);
+        theLinkedList.insertFirstLink("John Man", 300);
+        
+        
     }
     
 }
@@ -97,6 +108,32 @@ class LinkList {
             System.out.println("Empty List");
         }
         return theLink; // return object that has the bookName
+    }
+    
+    // remove an item in link list
+    public Link removeLink(String bookName) {
+        
+        Link currentLink = firstLink;
+        Link previousLink = firstLink;
+        
+        while(currentLink.bookName != bookName) {
+            
+            if (currentLink.next == null ) {
+                return null;
+            }
+            else {
+                previousLink = currentLink;
+                currentLink = currentLink.next;
+            }
+        }
+        
+        if (currentLink == firstLink) {
+            firstLink = firstLink.next;
+        } else {
+            previousLink.next = currentLink.next;
+        }
+        
+        return currentLink.next;
     }
     
     public void display() {
